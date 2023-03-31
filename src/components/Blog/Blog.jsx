@@ -27,7 +27,7 @@ const Blog = (props) => {
                     </div>
                 </div>
                 <div>
-                    <p className='opacity-50'>{readTime} mins read <span onClick={() => handleBookmark(id)}><button><FontAwesomeIcon icon={faBookmark} /></button></span></p>
+                    <p className='opacity-50'>{readTime} mins read <span onClick={() => handleBookmark(id)}> <button><FontAwesomeIcon icon={faBookmark} /></button></span></p>
                 </div>
 
             </div>
