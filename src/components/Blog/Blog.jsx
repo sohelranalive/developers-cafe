@@ -44,7 +44,6 @@ const Blog = (props) => {
                 <button className='mt-4 mb-4 underline text-blue-700' onClick={() => readHandler(id)}>Mark as read</button>
                 <hr className='border-2' />
             </div>
-
         </div>
     );
 };
