@@ -16,10 +16,11 @@ const Body = () => {
 
     const handleBookmark = (id) => {
         const findBookmarkedBlog = blogs.find(singleBlog => singleBlog.id === id)
-
         const exitedBookmark = bookmark.find(sb => sb.id === findBookmarkedBlog.id)
         if (exitedBookmark) {
             toast("This blog already added into bookmark !")
+            const newBookmarked = [...bookmark, findBookmarkedBlog]
+            setBookmark(newBookmarked)
         }
         else {
             const newBookmarked = [...bookmark, findBookmarkedBlog]
@@ -39,8 +40,8 @@ const Body = () => {
     }
 
     return (
-        <div className='mt-4 w-11/12 mx-auto'>
-            <div className='grid grid-cols-4 gap-4'>
+        <div className='w-11/12 mx-auto'>
+            <div className='md:grid grid-cols-4 gap-4'>
                 <div className='col-span-3'>
                     {
                         blogs.map((blog) => <Blog
@@ -56,7 +57,7 @@ const Body = () => {
                             <h1 className='text-center'>Spent time on read : {totalReadingTime} min</h1>
                         </div>
                         <div className='border-2 rounded mt-4 p-4 bg-slate-300'>
-                            <h1 className='mb-2'>Bookmarked Blogs:</h1>
+                            <h1 className='mb-2'>Bookmarked Blogs: {bookmark.length}</h1>
                             {
                                 bookmark.map(item => <p className='p-4 bg-white rounded mb-2'>{item.blogTitle}</p>)
                             }
