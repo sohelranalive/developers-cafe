@@ -1,4 +1,6 @@
 import React from 'react';
+import architectImage from '../../../public/architect.png'
+
 
 const Header = () => {
     return (
@@ -11,7 +13,7 @@ const Header = () => {
                     <a href='/details' className='pe-8'>Details</a>
                     <a href='/pricing' className='pe-8'>Pricing</a>
                     <a href='/contact' className='pe-8'>Contact</a>
-                    <img src="../../../public/architect.png" className='object-cover h-12 w-12 border rounded-full' />
+                    <img src={architectImage} className='object-cover h-12 w-12 border rounded-full' />
                 </div>
             </div>
         </>
