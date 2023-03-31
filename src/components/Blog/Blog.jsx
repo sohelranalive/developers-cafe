@@ -25,11 +25,11 @@ const Blog = (props) => {
                     </div>
                     <div>
                         <p>{authorName}</p>
-                        <p className=''>{published}</p>
+                        <p className='opacity-50'>{published}</p>
                     </div>
                 </div>
                 <div>
-                    <p>{readTime} mins read <span onClick={() => handleBookmark(id)}><button><FontAwesomeIcon icon={faBookmark} /></button></span></p>
+                    <p className='opacity-50'>{readTime} mins read <span onClick={() => handleBookmark(id)}><button><FontAwesomeIcon icon={faBookmark} /></button></span></p>
                 </div>
 
             </div>
@@ -38,7 +38,7 @@ const Blog = (props) => {
                 <h1 className='text-4xl'>{blogTitle}</h1>
                 <p className='mt-4'>
                     {
-                        tags.map(tag => <span className='mt-4'>#{tag} </span>)
+                        tags.map(tag => <span className='mt-4 opacity-50'>#{tag} </span>)
                     }
                 </p>
                 <button className='mt-4 mb-4 underline text-blue-700' onClick={() => readHandler(id)}>Mark as read</button>
