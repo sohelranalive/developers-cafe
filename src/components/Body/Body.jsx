@@ -4,28 +4,55 @@ import Blog from '../Blog/Blog';
 const Body = () => {
 
     const [blogs, setBlogs] = useState([])
-   
-    useEffect(()=>{
+    const [bookmark, setBookmark] = useState([])
+    const [readMarked, setReadMarked] = useState([])
+
+    useEffect(() => {
         fetch('blogsData.json')
-        .then(res=>res.json())
-        .then(data=>setBlogs(data))
-    },[])
+            .then(res => res.json())
+            .then(data => setBlogs(data))
+    }, [])
+
+    const handleBookmark = (id) => {
+        const findBookmarkedBlog = blogs.find(singleBlog => singleBlog.id === id)
+        const newBookmarked = [...bookmark, findBookmarkedBlog]
+        setBookmark(newBookmarked)
+    }
+
+    const readHandler = (id) =>{
+        const getReadMarkedBlog = blogs.find(singleBlog => singleBlog.id === id)
+        const newlyReadMarked = [...readMarked, getReadMarkedBlog]
+        setReadMarked(newlyReadMarked)
+    }
+
+    let totalReadingTime = 0;
+        for(const marked of readMarked){
+            totalReadingTime = totalReadingTime + marked.readTime;
+        }
 
     return (
         <div className='mt-4 w-11/12 mx-auto'>
-            <div className='grid grid-cols-4 gap-2'>
+            <div className='grid grid-cols-4 gap-4'>
                 <div className='col-span-3'>
                     {
-                        blogs.map(blog=><Blog blog={blog}></Blog>)
+                        blogs.map((blog) => <Blog
+                            blog={blog}
+                            handleBookmark={handleBookmark}
+                            readHandler={readHandler}
+                        ></Blog>)
                     }
                 </div>
-                <div className=''>
-                    <div className='border-2 rounded mt-8 p-4'>
-                        <h1 className='text-center'>Spent time on read : 177 min</h1>
-                    </div>
-                    <div className='border-2 rounded mt-4 p-4'>
-                        <h1 className=''>Bookmarked Blogs:</h1>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit quae alias laudantium voluptas necessitatibus, eum quaerat voluptatibus asperiores quos eaque?</p>
+                <div>
+                    <div className='sticky top-0'>
+                        <div className='border-2 rounded border-blue-700 mt-8 p-4 text-blue-700 font-bold'>
+                            <h1 className='text-center'>Spent time on read : {totalReadingTime} min</h1>
+                        </div>
+                        <div className='border-2 rounded mt-4 p-4'>
+                            <h1 className='mb-2'>Bookmarked Blogs:</h1>
+                            {
+                                bookmark.map(item => <p className='p-4 bg-slate-300 rounded mb-2'>{item.blogTitle}</p>)
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
