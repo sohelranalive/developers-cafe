@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBookmark } from '@fortawesome/free-solid-svg-icons'
+import { faBookmark } from '@fortawesome/free-regular-svg-icons'
 
 const Blog = (props) => {
-
     const { blogTitle, blogCover, authorName, authorImage, publishedDate, readTime, id, tags } = props.blog;
 
     const handleBookmark = props.handleBookmark;
     const readHandler = props.readHandler;
-    const published = publishedDate;
 
     return (
         <div>
@@ -25,7 +23,7 @@ const Blog = (props) => {
                     </div>
                     <div>
                         <p>{authorName}</p>
-                        <p className='opacity-50'>{published}</p>
+                        <p className='opacity-50'>{publishedDate}</p>
                     </div>
                 </div>
                 <div>

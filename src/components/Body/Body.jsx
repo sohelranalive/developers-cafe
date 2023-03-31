@@ -38,17 +38,18 @@ const Body = () => {
     for (const marked of readMarked) {
         totalReadingTime = totalReadingTime + marked.readTime;
     }
-
+    
     return (
         <div className='w-11/12 mx-auto'>
             <div className='md:grid grid-cols-4 gap-4'>
                 <div className='col-span-3'>
                     {
-                        blogs.map((blog) => <Blog
-                            blog={blog}
-                            handleBookmark={handleBookmark}
+                        blogs.map(blog => <Blog 
+                            blog={blog} 
+                            handleBookmark={handleBookmark} 
                             readHandler={readHandler}
-                        ></Blog>)
+                            key={blog.id}
+                            ></Blog>)
                     }
                 </div>
                 <div>
