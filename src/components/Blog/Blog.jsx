@@ -36,7 +36,7 @@ const Blog = (props) => {
                 <h1 className='text-4xl'>{blogTitle}</h1>
                 <p className='mt-4'>
                     {
-                        tags.map(tag => <span className='mt-4 opacity-50'>#{tag} </span>)
+                        tags.map((tag, index) => <span key={index} className='mt-4 opacity-50'>#{tag} </span>)
                     }
                 </p>
                 <button className='mt-4 mb-4 underline text-blue-700' onClick={() => readHandler(id)}>Mark as read</button>
