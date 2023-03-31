@@ -25,7 +25,7 @@ const Blog = (props) => {
                     </div>
                     <div>
                         <p>{authorName}</p>
-                        <p>{published}</p>
+                        <p className=''>{published}</p>
                     </div>
                 </div>
                 <div>
